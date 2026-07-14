@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "save": "npx bddgen",
+    "report": "npx playwright show-report",
+    "e2e": "npx playwright test",
+    "debug": "npx bddgen && npx playwright test --headed --grep \"@debug\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
