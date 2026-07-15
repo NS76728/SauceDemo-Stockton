@@ -11,12 +11,8 @@ export class CartPage {
         this.cartItems = page.locator('.cart_item');
     }
 
-    async verifyItemIsInCart(itemName: string) {
-        const structuralMatch = this.cartItems.filter({ hasText: itemName });
-        await expect(structuralMatch).toBeVisible();
-    }
-
     async clickCheckout() {
         await this.checkoutButton.click();
     }
+    
 }

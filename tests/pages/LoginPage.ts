@@ -29,8 +29,9 @@ export class LoginPage {
         await this.loginButton.click();
     }
 
-
-    async verifyErrorContains(text: string) {
-        await expect(this.errorMessage).toContainText(text);
+    async getErrorText(): Promise<string> {
+        await this.errorMessage.waitFor({ state: 'visible' });
+        console.log(await this.errorMessage.innerText());
+        return await this.errorMessage.innerText();
     }
 }

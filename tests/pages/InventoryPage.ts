@@ -13,20 +13,23 @@ export class InventoryPage {
         this.shoppingCartLink = page.locator('.shopping_cart_link');
     }
 
-    async verifyOnInventoryPage() {
-        await expect(this.headerTitle).toHaveText('Products');
-        await expect(this.page).toHaveURL(/.*inventory.html/);
+    async getHeaderText(): Promise<string> {
+        await this.headerTitle.waitFor({ state: 'visible' });
+        return await this.headerTitle.innerText();
+    }
+
+    async getPageUrl(): Promise<string> {
+        return this.page.url();
     }
 
     async addItemToCart(itemName: string) {
-        // Dynamic locator strategy: Targets the parent container of the named product 
-        // to isolate and click its specific "Add to cart" button
         const itemContainer = this.page.locator('.inventory_item', { hasText: itemName });
         await itemContainer.locator('button:has-text("Add to cart")').click();
     }
 
-    async verifyCartCount(expectedCount: string) {
-        await expect(this.shoppingCartBadge).toHaveText(expectedCount);
+    async getCartCount(): Promise<string> {
+        await this.shoppingCartBadge.waitFor({ state: 'visible' });
+        return await this.shoppingCartBadge.innerText();
     }
 
     async navigateToCart() {
