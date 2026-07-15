@@ -1,0 +1,77 @@
+# SauceDemo Stockton Test Automation
+
+This repository contains automated UI tests for the SauceDemo website. The framework is built using **Playwright**, **TypeScript**, and **Gherkin** for Behavior-Driven Development (BDD).
+
+## Prerequisites
+
+Before running the tests locally, ensure you have the following installed:
+*   [Node.js](https://nodejs.org) (v18 or higher recommended)
+*   [Git](https://git-scm.com)
+
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+Clone the repository to your local machine using Git:
+```bash
+git clone https://github.com
+cd SauceDemo-Stockton
+```
+
+### 2. Install Dependencies
+Install the required package dependencies defined in `package.json`:
+```bash
+npm install
+```
+
+### 3. Install Playwright Browsers
+Download and configure the necessary browser binaries (Chromium, Firefox, WebKit):
+```bash
+npx playwright install
+```
+
+---
+
+## Running Tests
+
+### Generate BDD Tests
+Since this project utilizes Gherkin feature files, generate the corresponding Playwright test files first if your setup requires a manual compilation step:
+```bash
+npx bddgen
+```
+
+### Run All Tests
+Execute the entire test suite locally in headless mode:
+```bash
+npx playwright test
+```
+
+### Run Tests in Headed Mode
+To watch the browser actions visually during test execution:
+```bash
+npx playwright test --headed
+```
+
+### Run a Specific Feature or Test File
+```bash
+npx playwright test tests/path/to/specific.spec.ts
+```
+
+### Run Scripts from the package.json
+Using the short hands you can run "npm run debug" which will create the nessesary javascript files and then run any test tagged with @debug
+```bash
+npm run debug
+npm run save
+npm run report
+npm run e2e
+```
+
+---
+
+## Viewing Test Reports
+
+After the tests complete, Playwright automatically generates an HTML report. You can open and inspect it by running:
+```bash
+npx playwright show-report
+```
